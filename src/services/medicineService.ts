@@ -10,9 +10,13 @@ export class MedicineService {
 
   async getMedicine(id: string): Promise<Medicine | null> {
     return this.dao.findById(id);
-  }
+}
 
   async addMedicine(medicineData: Partial<Medicine>): Promise<Medicine> {
-    return this.dao.create(medicineData);
+  return this.dao.create(medicineData);
+}
+
+  async sellMedicine(id: string, quantity: number) {
+    return this.dao.updateMedicineStock(id, quantity);
   }
 }

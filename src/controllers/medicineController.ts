@@ -16,4 +16,31 @@ router.post("/", async (ctx) => {
   ctx.body = medicine;
 });
 
+router.post("/:id/sell", async (ctx) => {
+  try {
+    const { quantity } = ctx.request.body as { quantity: number };
+    if (!quantity || quantity <= 0) {
+      ctx.status = 400;
+      ctx.body = { error: "Quantity must be positive" };
+      return;
+    }
+
+    const updated = await service.sellMedicine(
+      ctx.params.id,
+      quantity
+    );
+
+    if (!updated) {
+      ctx.status = 404;
+      ctx.body = { error: "Medicine not found" };
+      return;
+    }
+
+    ctx.body = { message: "Medicine sold", medicine: updated };
+  } catch (err: any) {
+    ctx.status = 400;
+    ctx.body = { error: err.message };
+  }
+});
+
 export default router;
