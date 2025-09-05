@@ -31,5 +31,13 @@
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.6.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SriRoshith/Api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SriRoshith/Api/issues"
+  },
+  "homepage": "https://github.com/SriRoshith/Api#readme"
 }
